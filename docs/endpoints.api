@@ -1,3 +1,9 @@
+Base:
+  - Root
+    -> Handle: /
+    -> Methods: GET
+    -> Parameters: ---
+
 Authorization:
   - Register
     -> Handle: /auth/register
