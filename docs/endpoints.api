@@ -1,0 +1,17 @@
+Authorization:
+  - Register
+    -> Handle: /auth/register
+    -> Methods: POST
+    -> Parameters: username, password
+  - Login
+    -> Handle: /auth/login
+    -> Methods: POST
+    -> Parameters: username, password
+  - Logout
+    -> Handle: /auth/logout
+    -> Methods: POST
+    -> Parameters: ---
+  - User (not implemented)
+    -> Handle: /auth/user
+    -> Methods: PUT, DELETE
+    -> Parameters: ---
