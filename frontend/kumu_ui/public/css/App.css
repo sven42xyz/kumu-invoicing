@@ -1,0 +1,47 @@
+.small-fluid-container{
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    padding: 2vmin;
+    background-color: rgb(244, 244, 244);
+    border-radius: 2vmin;
+    transform: translate(-50%, -50%);
+}
+.login-center-form{
+    padding: 2vmin;
+    text-align: left;
+}
+.login-form-group{
+    padding-bottom: 1.5vmin;
+    text-indent: 0.25vmin;
+    font-size: 2.25vmin;
+}
+.btn-Login{
+    position: absolute;
+    right: 0; bottom: 0;
+    margin: 4vmin;
+    width: 20vmin;
+    text-align: center;
+    font-size: 2.25vmin;
+}
+.form-control{
+    font-size: 2vmin;
+    width: 1005;
+    height: auto;
+}
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    position: absolute;
+    min-width:600px!important;
+    min-height: 500px!important;
+    background-color: rgba(29, 29, 29, 0.812);
+    width: 100%;
+    height: 100%;
+    top: 0; right: 0; bottom: 0; left: 0;
+}
