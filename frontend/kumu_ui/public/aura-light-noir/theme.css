@@ -4921,12 +4921,13 @@
   }
 
   .p-paginator {
-    background: #ffffff;
+    background: brown;
     color: #334155;
     border: solid #e2e8f0;
     border-width: 0;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
   }
   .p-paginator .p-paginator-first,
 .p-paginator .p-paginator-prev,

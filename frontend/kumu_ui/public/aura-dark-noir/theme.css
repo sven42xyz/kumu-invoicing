@@ -4911,14 +4911,16 @@
   }
 
   .p-paginator {
-    background: #18181b;
+    background: brown;
     color: #ffffff;
     border: solid #3f3f46;
     border-width: 0;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
   }
-  .p-paginator .p-paginator-first,
+
+.p-paginator .p-paginator-first,
 .p-paginator .p-paginator-prev,
 .p-paginator .p-paginator-next,
 .p-paginator .p-paginator-last {
