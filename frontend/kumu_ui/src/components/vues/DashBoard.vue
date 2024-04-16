@@ -12,6 +12,17 @@
                 </div>
             </template>
         </TabMenu>
+        <Field-set style="width: 45%; margin-left: 2.5%; margin-top: 1%; background-color: whitesmoke;">
+            <template #legend>
+                <div class="flex pl-2" style="background-color: rgb(124, 123, 123); border-top-left-radius: 1vmin; border-top-right-radius: 1vmin; text-align: left; text-indent: 2.5%; font-size: 2.5vmin;">Eingehend</div>
+            </template>
+            <p class="m-0" style="color: black;">
+                <DataTable :value="products" paginator :rows="5" :rowsPerPageOptions="[5, 10, 20]" style="color: black; font-size: 2vmin; border-radius: 0%;"
+                paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"        currentPageReportTemplate="{first} to {last} of {totalRecords}">
+                    <ColumnColumn field="Rechnungsnummer" header="Rechnungsnummer" style="background-color: whitesmoke;color: black; font-size: 2vmin;"></ColumnColumn>
+                </DataTable>
+            </p>
+        </Field-set>
     </div>
   </template>
   
@@ -30,7 +41,10 @@
                 {type: 'label', label: 'Rechnungseingabe', url: '/dashboard', icon:''},
                 {type: 'label', label: 'Stammdatenverwaltung', url: '/dashboard', icon:''},
                 {type: '', label: 'Abmelden ', url: '/', icon:'pi pi-sign-out'},
-            ]
+            ],
+        products: [
+            {Rechnungsnummer: 'Rechnungsnummer'}, {Rechnungsnummer: 'Rechnungsnummer'}
+        ]
       };
     },
   
@@ -48,4 +62,9 @@
     width: 100%;
     height: 100%;
    }
+ 
+   .p-paginator {
+        background: whitesmoke;
+        color: grey;
+    }
   </style>

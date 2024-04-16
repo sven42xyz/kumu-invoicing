@@ -14,6 +14,7 @@ import VueCookies from 'vue3-cookies'
 import App from './App.vue'
 import router from './router'
 import PrimeVue from 'primevue/config';
+import Fieldset from 'primevue/fieldset';
 import ColorPicker from "primevue/colorpicker"
 import Tooltip from 'primevue/tooltip';
 import ConfirmPopup from 'primevue/confirmpopup';
@@ -22,6 +23,10 @@ import ConfirmationService from 'primevue/confirmationservice';
 import OverlayPanel from 'primevue/overlaypanel';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
+
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+
 
 const app = createApp(App);
 
@@ -41,7 +46,10 @@ app.use(ToastService);
 app.use(ConfirmationService);
 app.component('OverlayPanel', OverlayPanel);
 app.component('ColorPicker', ColorPicker);
+app.component('Field-set', Fieldset);
 app.component('TabMenu', TabMenu);
+app.component('DataTable', DataTable);
+app.component('ColumnColumn', Column);
 app.directive('tooltip', Tooltip);
 app.component('ConfirmPopup', ConfirmPopup);
 app.component('Toast-Toast', Toast);
