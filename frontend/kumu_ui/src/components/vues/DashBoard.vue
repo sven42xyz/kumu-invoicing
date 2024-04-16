@@ -1,66 +1,51 @@
 <template>
-    <div id = "WelcomeDiv">
-      <div class="container-fluid small-fluid-container">
-        <form id="WelcomeForm" class="small-center-form" v-on:submit.prevent>
-          <h1 class="card-header">Rechnungscockpit</h1>
-          <hr/>
-          <div class="input-group mt-1">
-              <span class="input-group-text" id="basic-addon1">username</span>
-              <input type="text" class="form-control" v-tooltip="{ value: 'Enter a Username', showDelay: 1000, hideDelay: 300}" aria-label="Username" v-model="username">
-          </div>
-          <div class>
-            <button v-if="this.validateInput() == true" v-on:click="dummy1" v-tooltip="{ value: 'Create a new Game', showDelay: 1000, hideDelay: 300 }" class="btn btn-primary-lavender w-75" type="Submit" id="new-game" aria-expanded="false">New Game</button>
-            <button v-else v-on:click="dummy1" v-tooltip="{ value: 'Please enter username',pt: {text: 'text-danger'}}" class="btn btn-primary-lavender w-75" type="Submit" id="new-game" aria-expanded="false">New Game</button>
-          </div>
-        </form>
-      </div>
+    <div id = "Main">
+        <TabMenu :model="items">
+            <template #item="{ item, props }">
+                <div v-if="item.type"  v-ripple v-bind="props.action" @click="navigate(item.url)" style="border-color: transparent;">
+                    <span v-bind="props.icon" style="color: 'var(--primary-color)'; font-size: 2.25vmin;" />
+                    <span v-bind="props.label" style="font-size: 2.25vmin;">{{ item.label }}</span>
+                </div>
+                <div v-else  v-ripple v-bind="props.action" @click="navigate(item.url)" style="position: absolute; right: 0; border-color: transparent;">
+                    <span v-bind="props.label" style="margin-right: 1vmin; font-size: 2vmin;">{{ item.label }}</span>
+                    <span v-bind="props.icon" style="color: 'var(--primary-color)'; font-size: 2.25vmin;" />
+                </div>
+            </template>
+        </TabMenu>
     </div>
   </template>
   
-  <script>
-  //import SocketioService from '../../services/socketio.service.js';
-  
+  <script> 
   export default {
-    name: 'LandingPage',
+    name: 'DashBoard',
   
     created(){
-      /*if(SocketioService.socket.connected == false){
-        console.log("Hello there!");
-        SocketioService.connect();
-      }*/
     },
   
     data() {
       return {
-        username: null,
-        intent: null,
-        game: null,
-        popover1: "display: none",
-        popover2: "display: none",
-        popover3: "display: none",
+        items: [
+                {type: 'label', label: 'Übersicht', url: '/dashboard', icon:'pi pi-home'},
+                {type: 'label', label: 'Rechnungseingabe', url: '/dashboard', icon:''},
+                {type: 'label', label: 'Rechnungseingabe', url: '/dashboard', icon:''},
+                {type: 'label', label: 'Stammdatenverwaltung', url: '/dashboard', icon:''},
+                {type: '', label: 'Abmelden ', url: '/', icon:'pi pi-sign-out'},
+            ]
       };
     },
   
     methods: {
-      validateInput() {
-        const regex = /^[a-zA-Z0-9]+$/;
-  
-        if (!this.username) {
-          //add error handling -> user input needed
-          return;
+        navigate(i){
+            this.$router.push(i);    
         }
-  
-        if (!regex.test(this.username)) {
-          return;
-        }
-  
-        return true;
-      }
   
     }
   }
   </script>
   
   <style scoped>
-   
+   #Main{
+    width: 100%;
+    height: 100%;
+   }
   </style>

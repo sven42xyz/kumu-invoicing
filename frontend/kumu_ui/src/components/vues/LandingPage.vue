@@ -68,7 +68,14 @@ export default {
         return;
       }
 
+      //Hier Loginlogik
+
       return true;
+    },
+
+    dummy1() {
+      //Login erfolgreich
+        this.$router.push('/dashboard');       
     }
 
   }

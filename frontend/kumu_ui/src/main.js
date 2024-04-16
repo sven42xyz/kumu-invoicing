@@ -1,7 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import "primevue/resources/themes/soho-dark/theme.css"
+import "primevue/resources/themes/aura-light-noir/theme.css";
+import "primevue/resources/themes/aura-dark-noir/theme.css";
+import "primevue/resources/themes/aura-light-noir/fonts/Inter-roman.var.woff2";
+import "primevue/resources/themes/aura-dark-noir/fonts/Inter-roman.var.woff2";
+import 'primeicons/primeicons.css'
 import "bootstrap"
 import "../public/css/App.css"
+import "../public/aura-dark-noir/theme.css"
 
 import { createApp } from 'vue'
 import VueCookies from 'vue3-cookies'
@@ -12,6 +17,7 @@ import PrimeVue from 'primevue/config';
 import ColorPicker from "primevue/colorpicker"
 import Tooltip from 'primevue/tooltip';
 import ConfirmPopup from 'primevue/confirmpopup';
+import TabMenu from 'primevue/tabmenu';
 import ConfirmationService from 'primevue/confirmationservice';
 import OverlayPanel from 'primevue/overlaypanel';
 import Toast from 'primevue/toast';
@@ -30,11 +36,12 @@ app.use(
   //      connection: process.env.VUE_APP_SOCKET_ENDPOINT
  //   })
 );
-app.use(PrimeVue);
+app.use(PrimeVue, { ripple: true, inputStyle: "outlined" });
 app.use(ToastService);
 app.use(ConfirmationService);
 app.component('OverlayPanel', OverlayPanel);
 app.component('ColorPicker', ColorPicker);
+app.component('TabMenu', TabMenu);
 app.directive('tooltip', Tooltip);
 app.component('ConfirmPopup', ConfirmPopup);
 app.component('Toast-Toast', Toast);

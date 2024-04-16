@@ -4,7 +4,7 @@ import DashBoard from '../components/vues/DashBoard.vue'
 
 const routes = [
     { path: '/', component: LandingPage },
-    { path: '/login', name: 'login', component: DashBoard },
+    { path: '/dashboard', name: 'dashboard', component: DashBoard },
 ];
 
 const router = createRouter({
