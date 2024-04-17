@@ -4275,7 +4275,7 @@
     border-width: 0 0 1px 0;
     font-weight: 600;
     color: #ffffff;
-    background: #18181b;
+    background: var(--gray-100);
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, outline-color 0.2s;
   }
   .p-datatable .p-datatable-tfoot > tr > td {
@@ -4326,7 +4326,8 @@
     outline: 0 none;
   }
   .p-datatable .p-datatable-tbody > tr {
-    background: #18181b;
+    background: var(--gray-0);
+    font-size: 1.5vmin;
     color: #ffffff;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, outline-color 0.2s;
   }
@@ -4463,7 +4464,7 @@
     border-width: 0 1px 0 1px;
   }
   .p-datatable.p-datatable-striped .p-datatable-tbody > tr.p-row-odd {
-    background: #1f1f22;
+    background: var(--gray-100);
   }
   .p-datatable.p-datatable-striped .p-datatable-tbody > tr.p-row-odd.p-highlight {
     background: rgba(250, 250, 250, 0.16);
