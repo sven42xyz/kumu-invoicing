@@ -17,7 +17,7 @@
         <Field-set style="width: 45%; margin-left: 2.5%; margin-top: 1%; background-color: whitesmoke;">
             <template #legend>
                 <div class="flex pl-2"
-                    style="background-color: rgb(124, 123, 123); border-top-left-radius: 1vmin; border-top-right-radius: 1vmin; text-align: left; text-indent: 2.5%; font-size: 2.5vmin;">
+                    style="background-color: rgb(124, 123, 123); border-top-left-radius: 1vmin; border-top-right-radius: 1vmin; height: 6vmin; padding: 1vmin; text-align: left; text-indent: 2.5%; font-size: 2.5vmin;">
                     Eingehend</div>
             </template>
             <p class="m-0" style="color: black;">
