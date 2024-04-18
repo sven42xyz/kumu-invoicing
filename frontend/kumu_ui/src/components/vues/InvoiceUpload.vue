@@ -14,48 +14,42 @@
                 </div>
             </template>
         </TabMenu>
-        <Card style="width: 47%; height: 5vmin; margin-left: 2%; float:left; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;">
-            hi
+        <Card style="width: 47%; height: 5.5vmin; margin-left: 2%; float:left; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;"> 
+            <div style="width: 47%; float: left; padding-top: 1vmin;">Datei zum hochladen auswählen...</div>
+            <FileUpload style=" margin-right: 1vmin; float: right; font-size: 2vmin" mode="basic" name="demo[]" url="/api/upload" accept="xml/*" :maxFileSize="1000000"  @upload="onUpload" :auto="true" chooseLabel="Durchsuchen" />
         </Card>
-        <Card style="width: 47%; height: 5vmin; margin-right: 2%; float:right; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;">
-            hi
+        <Card style="width: 47%; height: 5.5vmin; margin-right: 2%; float:right; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;">
+            hihi
         </Card>
-        <Field-set style="width: 47%; margin-left: 2%; float:left; margin-top: 1%; background-color: whitesmoke;">
-            <template #legend>
-                <div class="flex pl-2"
-                    style="background-color: rgb(124, 123, 123); border-top-left-radius: 1vmin; border-top-right-radius: 1vmin; height: 6vmin; padding: 1vmin; text-align: left; text-indent: 2.5%; font-size: 2.5vmin;">
-                    Eingehend</div>
-            </template>
-            <p class="m-0" style="color: black;">
-                <DataTable v-model:filters="filters" :value="products" dataKey="id" filterDisplay="row" stripedRows scrollable scrollHeight="73vmin" style="color: black; border-radius: 0%; height: 80%">
-                    <ColumnColumn field="Rechnungsnummer" filterField="Rechnungsnummer" header="Rechnungsnummer" style="color: black; font-size: 1.75vmin; padding: 1vmin">
-                        <template #body="{ data }">{{ data.Rechnungsnummer }}</template>
-                        <template #filter="{ filterModel, filterCallback }">
-                            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Rechnungsnummer" />
-                        </template>
-                    </ColumnColumn>
-                    <ColumnColumn field="Partner" filterField="Partner" header="Partner" style="color: black; font-size: 1.75vmin; padding: 1vmin">
-                        <template #body="{ data }">{{ data.Partner }}</template>
-                        <template #filter="{ filterModel, filterCallback }">
-                            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Partner" />
-                        </template>
-                    </ColumnColumn>
-                    <ColumnColumn field="Datum" filterField="Datum" header="Datum" style="color: black; font-size: 1.75vmin; padding: 1vmin">
-                        <template #body="{ data }">{{ data.Datum }}</template>
-                        <template #filter="{ filterModel, filterCallback }">
-                            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Datum" />
-                        </template>
-                    </ColumnColumn>
-                    <ColumnColumn field="Summe" filterField="Summe" header="Summe" style="color: black; font-size: 1.75vmin; padding: 1vmin">
-                        <template #body="{ data }">{{ data.Summe }}</template>
-                        <template #filter="{ filterModel, filterCallback }">
-                            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Summe" />
-                        </template>
-                    </ColumnColumn>
-                </DataTable>
-            </p>
-        </Field-set>
-        <Card style="width: 47%; height: 80%; margin-right: 2%; float:right; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;">
+        <p style="width: 47%; margin-left: 2%; float:left; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;">
+            <DataTable v-model:filters="filters" :value="products" dataKey="id" filterDisplay="row" stripedRows scrollable scrollHeight="73vmin" style="color: black; border-radius: 0%; height: 80%">
+                <ColumnColumn field="Rechnungsnummer" filterField="Rechnungsnummer" header="Rechnungsnummer" style="color: black; font-size: 1.75vmin; padding: 1vmin">
+                    <template #body="{ data }">{{ data.Rechnungsnummer }}</template>
+                    <template #filter="{ filterModel, filterCallback }">
+                        <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Rechnungsnummer" />
+                    </template>
+                </ColumnColumn>
+                <ColumnColumn field="Partner" filterField="Partner" header="Partner" style="color: black; font-size: 1.75vmin; padding: 1vmin">
+                    <template #body="{ data }">{{ data.Partner }}</template>
+                    <template #filter="{ filterModel, filterCallback }">
+                        <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Partner" />
+                    </template>
+                </ColumnColumn>
+                <ColumnColumn field="Datum" filterField="Datum" header="Datum" style="color: black; font-size: 1.75vmin; padding: 1vmin">
+                    <template #body="{ data }">{{ data.Datum }}</template>
+                    <template #filter="{ filterModel, filterCallback }">
+                        <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Datum" />
+                    </template>
+                </ColumnColumn>
+                <ColumnColumn field="Summe" filterField="Summe" header="Summe" style="color: black; font-size: 1.75vmin; padding: 1vmin">
+                    <template #body="{ data }">{{ data.Summe }}</template>
+                    <template #filter="{ filterModel, filterCallback }">
+                        <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter" placeholder="Summe" />
+                    </template>
+                </ColumnColumn>
+            </DataTable>
+        </p>
+        <Card style="width: 47%; height: 77.5%; margin-right: 2%; float:right; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;">
             hi
         </Card>
     </div>

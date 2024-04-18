@@ -1,17 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import "primevue/resources/themes/aura-light-noir/theme.css";
 import "primevue/resources/themes/aura-dark-noir/theme.css";
-import "primevue/resources/themes/aura-light-noir/fonts/Inter-roman.var.woff2";
 import "primevue/resources/themes/aura-dark-noir/fonts/Inter-roman.var.woff2";
 import 'primeicons/primeicons.css'
 import "bootstrap"
 import "../public/css/App.css"
 import "../public/aura-dark-noir/theme.css"
-import "../public/aura-light-noir/theme.css"
 
 import { createApp } from 'vue'
 import VueCookies from 'vue3-cookies'
-//import VueSocketIO from 'vue-socket.io'
 import App from './App.vue'
 import router from './router'
 import PrimeVue from 'primevue/config';

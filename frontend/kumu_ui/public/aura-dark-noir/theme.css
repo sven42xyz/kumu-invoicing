@@ -4172,6 +4172,7 @@
   .p-column-filter-row {
     display: flex;
     align-items: center;
+    font-size: 1.5vmin;
     width: 100%;
   }
 
@@ -4182,7 +4183,7 @@
 
   .p-column-filter-row .p-column-filter-element {
     flex: 1 1 auto;
-    width: 1%;
+    width: 90%;
   }
 
   .p-column-filter-menu-button,
@@ -11324,6 +11325,8 @@
 
   .p-inputtext {
     box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(18, 18, 23, 0.05);
+    background-color: var(--gray-600);
+    color:#000;
   }
 
   .p-inputtext:disabled {
