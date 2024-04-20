@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"chapter42.de/m/internal/database"
+	"chapter42.de/m/internal/response"
 	"github.com/gorilla/sessions"
 )
 
@@ -15,7 +16,7 @@ func LogoutHandler(db *database.MySQLDB, store *sessions.CookieStore) http.Handl
 	return func(w http.ResponseWriter, r *http.Request) {
 		// Get session id from r
 		session, err := store.Get(r, "session-cookie")
-		if err != nil {
+		if err != nil || session.IsNew {
 			http.Error(w, "Session not found", http.StatusUnauthorized)
 			return
 		}
@@ -33,7 +34,7 @@ func LogoutHandler(db *database.MySQLDB, store *sessions.CookieStore) http.Handl
 		RootHandler()
 
 		// Return success response
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("Logout successful"))
+		response.WriteResponse(w, "Logout successful", http.StatusOK)
+		return
 	}
 }

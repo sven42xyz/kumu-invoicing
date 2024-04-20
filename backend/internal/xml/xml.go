@@ -3,15 +3,16 @@ package xml
 import (
 	"encoding/xml"
 	"fmt"
+	"io"
 	"os"
 )
 
 // StandardBusinessDocument represents the root element of the XML
 type StandardBusinessDocument struct {
-	XMLName                        xml.Name `xml:"StandardBusinessDocument"`
-	XMLNS                          string   `xml:"xmlns,attr"`
-	StandardBusinessDocumentHeader StandardBusinessDocumentHeader
-	Invoice                        Invoice `xml:"ubl:Invoice"`
+	XMLName                        xml.Name                       `xml:"StandardBusinessDocument"`
+	XMLNS                          string                         `xml:"xmlns,attr"`
+	StandardBusinessDocumentHeader StandardBusinessDocumentHeader `xml:"StandardBusinessDocumentHeader"`
+	Invoice                        Invoice                        `xml:"ubl:Invoice"`
 }
 
 // StandardBusinessDocumentHeader represents the StandardBusinessDocumentHeader element
@@ -77,7 +78,7 @@ type Invoice struct {
 	DueDate                 string             `xml:"cbc:DueDate"`
 	InvoiceTypeCode         string             `xml:"cbc:InvoiceTypeCode"`
 	DocumentCurrencyCode    string             `xml:"cbc:DocumentCurrencyCode"`
-	OrderReference          CBC_ID     `xml:"cac:OrderReference"`
+	OrderReference          CBC_ID             `xml:"cac:OrderReference"`
 	AccountingSupplierParty AccountingParty    `xml:"cac:AccountingSupplierParty"`
 	AccountingCustomerParty AccountingParty    `xml:"cac:AccountingCustomerParty"`
 	Delivery                Delivery           `xml:"cac:Delivery"`
@@ -138,7 +139,7 @@ type Country struct {
 
 // PartyTaxScheme represents the PartyTaxScheme element
 type PartyTaxScheme struct {
-	CompanyID string    `xml:"cbc:CompanyID"`
+	CompanyID string `xml:"cbc:CompanyID"`
 	TaxScheme CBC_ID `xml:"cac:TaxScheme"`
 }
 
@@ -161,8 +162,8 @@ type Delivery struct {
 
 // PaymentMeans represents the PaymentMeans element
 type PaymentMeans struct {
-	PaymentMeansCode      string                `xml:"cbc:PaymentMeansCode"`
-	PaymentID             string                `xml:"cbc:PaymentID"`
+	PaymentMeansCode      string `xml:"cbc:PaymentMeansCode"`
+	PaymentID             string `xml:"cbc:PaymentID"`
 	PayeeFinancialAccount CBC_ID `xml:"cac:PayeeFinancialAccount"`
 }
 
@@ -181,9 +182,9 @@ type Amount struct {
 
 // TaxCategory represents the TaxCategory element
 type TaxCategory struct {
-	ID        string    `xml:"cbc:ID"`
-	Percent   string    `xml:"cbc:Percent"`
-	TaxScheme CBC_ID    `xml:"cac:TaxScheme"`
+	ID        string `xml:"cbc:ID"`
+	Percent   string `xml:"cbc:Percent"`
+	TaxScheme CBC_ID `xml:"cac:TaxScheme"`
 }
 
 // TaxTotal represents the TaxTotal element
@@ -210,22 +211,22 @@ type LegalMonetaryTotal struct {
 
 // InvoiceLine represents the InvoiceLine element
 type InvoiceLine struct {
-	ID                  string `xml:"cbc:ID"`
+	ID                  string           `xml:"cbc:ID"`
 	InvoicedQuantity    InvoicedQuantity `xml:"cbc:InvoicedQuantity"`
-	LineExtensionAmount Amount `xml:"cbc:LineExtensionAmount"`
-	Item                Item `xml:"cac:Item"`
-	Price               Price `xml:"cac:Price"`
+	LineExtensionAmount Amount           `xml:"cbc:LineExtensionAmount"`
+	Item                Item             `xml:"cac:Item"`
+	Price               Price            `xml:"cac:Price"`
 }
 
 type InvoicedQuantity struct {
-    InvoicedQuantity string `xml:",chardata"`
-    UnitCode         string `xml:"currencyID,attr"`
+	InvoicedQuantity string `xml:",chardata"`
+	UnitCode         string `xml:"currencyID,attr"`
 }
 
 // Item represents the Item element
 type Item struct {
-	Name                      string `xml:"cbc:Name"`
-	SellersItemIdentification CBC_ID `xml:"cac:SellersItemIdentification"`
+	Name                      string                `xml:"cbc:Name"`
+	SellersItemIdentification CBC_ID                `xml:"cac:SellersItemIdentification"`
 	ClassifiedTaxCategory     ClassifiedTaxCategory `xml:"cac:ClassifiedTaxCategory"`
 }
 
@@ -283,19 +284,19 @@ func NewXMLFile() error {
 			},
 		},
 		Invoice: Invoice{
-            XMLNS_ubl: "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
-            XMLNS_cac: "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
-            XMLNS_cbc: "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2",
-            XMLNS_xsi: "http://www.w3.org/2001/XMLSchema-instance",
-            XMLNS_qdt: "urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2",
-            XMLNS_udt: "urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2",
-            XMLNS_ccts: "urn:un:unece:uncefact:documentation:2",
-            XMLNS: "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
-            SchemaLocation: "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd",
+			XMLNS_ubl:      "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
+			XMLNS_cac:      "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+			XMLNS_cbc:      "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2",
+			XMLNS_xsi:      "http://www.w3.org/2001/XMLSchema-instance",
+			XMLNS_qdt:      "urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2",
+			XMLNS_udt:      "urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2",
+			XMLNS_ccts:     "urn:un:unece:uncefact:documentation:2",
+			XMLNS:          "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
+			SchemaLocation: "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd",
 			CustomizationID: CustomizationID{
-                CustomizationID: "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0",
-                XMLNS_cbc: "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2",
-            },
+				CustomizationID: "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0",
+				XMLNS_cbc:       "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2",
+			},
 			ProfileID:            "urn:fdc:peppol.eu:2017:poacc:billing:01:1.0",
 			ID:                   "1026127",
 			IssueDate:            "2024-04-14",
@@ -327,4 +328,14 @@ func NewXMLFile() error {
 	fmt.Println("XML file created successfully")
 
 	return nil
+}
+
+func (p *StandardBusinessDocument) PeppolDecoder(r io.Reader) error {
+	d := xml.NewDecoder(r)
+	return d.Decode(p)
+}
+
+func (p *StandardBusinessDocument) PeppolEncoder(w io.Writer) error {
+	e := xml.NewEncoder(w)
+	return e.Encode(p)
 }

@@ -24,14 +24,14 @@ func main() {
 	}
 	defer db.Close()
 
-    store := sessions.NewCookieStore([]byte("placeholder"))
-    store.Options = &sessions.Options{
-        Path:     "/",
-        MaxAge:   5000,
-        SameSite: http.SameSiteStrictMode,
-        HttpOnly: false, // set to true as soon as https is available
-        Secure:   false, // set to true as soon as https is available
-    }
+	store := sessions.NewCookieStore([]byte("placeholder"))
+	store.Options = &sessions.Options{
+		Path:     "/",
+/* 		MaxAge:   5000,
+ */		SameSite: http.SameSiteStrictMode,
+		HttpOnly: false, // set to true as soon as https is available
+		Secure:   false, // set to true as soon as https is available
+	}
 
 	// Router
 	r := mux.NewRouter()
@@ -43,18 +43,19 @@ func main() {
 	r.HandleFunc("/auth/logout", handlers.LogoutHandler(db, store)).Methods("POST")
 	r.HandleFunc("/auth/user", handlers.UserHandler(db, store)).Methods("PUT")
 	r.HandleFunc("/auth/user", handlers.UserHandler(db, store)).Methods("DELETE")
+	r.HandleFunc("/api/file", handlers.FileHandler(db, store)).Methods(http.MethodPost)
 
 	// Rate Limiter
 	rl := middleware.NewRateLimiter(10, 1)
 	r.Use(rl.Limit)
 
-    // CORS-Handler
-    c := cors.New(cors.Options{
+	// CORS-Handler
+	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://172.17.224.127:8080"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Origin", "Authorization", "Content-Type"},
 		AllowCredentials: true,
-		Debug:            true,
+		Debug:            false,
 	})
 	handler := c.Handler(r)
 

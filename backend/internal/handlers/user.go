@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"log"
 	"net/http"
 
 	"chapter42.de/m/internal/database"
@@ -15,8 +14,6 @@ func UserHandler(db *database.MySQLDB, store *sessions.CookieStore) http.Handler
 			http.Error(w, "Session not found", http.StatusUnauthorized)
 			return
 		}
-
-		log.Println(session)
 
 		switch r.Method {
 		case http.MethodPut:

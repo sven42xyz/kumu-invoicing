@@ -23,10 +23,16 @@ const loginUser = async (data) => {
     return response.data;
 };
 
-const logoutUser = async (data) => {
+const logoutUser = async () => {
     const response = await api.post(
         "/logout",
-        data
+    );
+    return response.data;
+};
+
+const accessControll = async () => {
+    const response = await api.post(
+        "/access",
     );
     return response.data;
 };
@@ -35,4 +41,5 @@ export {
     registerUser,
     loginUser,
     logoutUser,
+    accessControll,
 };
