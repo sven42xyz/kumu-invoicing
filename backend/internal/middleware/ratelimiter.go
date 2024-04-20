@@ -19,7 +19,7 @@ func NewRateLimiter(ratePerSec, burst int) *RateLimiter {
 }
 
 // Middleware is the middleware function to rate limit requests
-func (rl *RateLimiter) Middleware(next http.Handler) http.Handler {
+func (rl *RateLimiter) Limit(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
         if rl.limiter.TakeAvailable(1) == 0 {
             http.Error(w, "Too many requests, please try again later", http.StatusTooManyRequests)
