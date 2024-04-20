@@ -1,11 +1,11 @@
 <template>
     <div id="Main">
-        <TabMenu :model="items">
+        <TabMenu :model="items" :active-index="2">
             <template #item="{ item, props }">
                 <div v-if="item.type" v-ripple v-bind="props.action" @click="navigate(item.url)"
-                    style="border-color: transparent;">
-                    <span v-bind="props.icon" style="color: 'var(--primary-color)'; font-size: 2.2vmin;" />
-                    <span v-bind="props.label" style="font-size: 2.2vmin;">{{ item.label }}</span>
+                        style="border-color: transparent;">
+                        <span v-bind="props.icon" style="color: 'var(--primary-color)'; font-size: 2.2vmin;" />
+                        <span v-bind="props.label" style="font-size: 2.2vmin;">{{ item.label }}</span>
                 </div>
                 <div v-else v-ripple v-bind="props.action" @click="navigate(item.url)"
                     style="position: absolute; right: 0; border-color: transparent;">
@@ -83,6 +83,7 @@ Quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor r
   import { FilterMatchMode } from 'primevue/api';
   export default {
     name: 'DashBoard',
+    activeIndex : 2,
   
     created(){
     },
@@ -97,11 +98,11 @@ Quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor r
                 Summe: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
             },
             items: [
-                {type: 'label', label: 'Übersicht', url: '/dashboard', icon:'pi pi-home'},
-                {type: 'label', label: 'Rechnungseingabe', url: '/outbound', icon:''},
-                {type: 'label', label: 'Rechnungseingang', url: '/inbound', icon:''},
-                {type: 'label', label: 'Stammdatenverwaltung', url: '/contacts', icon:''},
-                {type: '', label: 'Abmelden ', url: '/', icon:'pi pi-sign-out'},
+                {type: 'label', label: 'Übersicht', url: '/dashboard', icon:'pi pi-home', active: false},
+                {type: 'label', label: 'Rechnungseingabe', url: '/outbound', icon:'', active: false},
+                {type: 'label', label: 'Rechnungseingang', url: '/inbound', icon:'', active: true},
+                {type: 'label', label: 'Stammdatenverwaltung', url: '/contacts', icon:'', active: false},
+                {type: '', label: 'Abmelden ', url: '/', icon:'pi pi-sign-out', active: false},
             ],
         products: [
             {Rechnungsnummer: '012345678',
