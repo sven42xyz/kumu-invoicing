@@ -35,7 +35,6 @@ const activities = ref([
 </script>
 
 <script>
-import { FilterMatchMode } from 'primevue/api';
 import InvoiceTable from '../scraps/InvoiceTable.vue';
 import NavBar from '../scraps/NavBar.vue';
 
@@ -50,19 +49,6 @@ export default {
             left: "left",
             right: "right",
             filtered: true,
-            filters: {
-                Rechnungsnummer: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-                Partner: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-                Datum: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-                Summe: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
-            },
-            items: [
-                { type: 'label', label: 'Übersicht', url: '/dashboard', icon: 'pi pi-home', active: false },
-                { type: 'label', label: 'Rechnungseingabe', url: '/outbound', icon: '', active: false },
-                { type: 'label', label: 'Rechnungseingang', url: '/inbound', icon: '', active: true },
-                { type: 'label', label: 'Stammdatenverwaltung', url: '/contacts', icon: '', active: false },
-                { type: '', label: 'Abmelden ', url: '/', icon: 'pi pi-sign-out', active: false },
-            ],
             products: [
                 { Rechnungsnummer: '012345678',
                     Partner: 'Hans',

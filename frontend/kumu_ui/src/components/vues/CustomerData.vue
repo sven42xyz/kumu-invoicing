@@ -22,13 +22,6 @@ import NavBar from '../scraps/NavBar.vue';
         left: "left",
         right: "right",
         filtered: false,
-        items: [
-                {type: 'label', label: 'Übersicht', url: '/dashboard', icon:'pi pi-home'},
-                {type: 'label', label: 'Rechnungseingabe', url: '/outbound', icon:''},
-                {type: 'label', label: 'Rechnungseingang', url: '/inbound', icon:''},
-                {type: 'label', label: 'Stammdatenverwaltung', url: '/contacts', icon:''},
-                {type: '', label: 'Abmelden ', url: '/', icon:'pi pi-sign-out'},
-            ],
         products: [
             {Rechnungsnummer: '012345678',
              Partner: 'Hans',
