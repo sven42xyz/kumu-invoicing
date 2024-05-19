@@ -1,13 +1,10 @@
 <template>
     <div id="Main">
-        <NavBar :page="0"></NavBar>
-        <InvoiceTable :invoiceArray= this.products :style="left" :filtered="false" title="Eingehend"></InvoiceTable>
-        <InvoiceTable :invoiceArray= this.products :style="right" :filtered="false" title="Ausgehend"></InvoiceTable>
+        <NavBar :page="3"></NavBar>
     </div>
 </template>
 
 <script setup>
-import InvoiceTable from '../scraps/InvoiceTable.vue';
 import NavBar from '../scraps/NavBar.vue';
 </script>
 
