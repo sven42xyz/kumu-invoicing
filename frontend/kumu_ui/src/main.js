@@ -147,7 +147,7 @@ app.component('DataTable', DataTable);
 app.component('ColumnColumn', Column);
 app.directive('tooltip', Tooltip);
 app.component('ConfirmPopup', ConfirmPopup);
-app.component('Toast-Toast', Toast);
+app.component('ToastToast', Toast);
 
 app.directive('badge', BadgeDirective);
 app.directive('ripple', Ripple);

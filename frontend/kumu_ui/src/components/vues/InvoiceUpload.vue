@@ -8,6 +8,7 @@
                 chooseLabel="Durchsuchen" />
         </Card>
         <Card style="width: 47%; height: 5.4vmin; margin-right: 2%; float:right; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;">
+            <!-- evlt durch Toolbar ersetzen -->
             <InputGroup style="border-radius: 1vmin;">
                 <InputText type="text" v-model="value" placeholder="Rechnungsnummer" />
                 <DropdownDropdown v-model="selectedActivity" :options="activities" optionLabel="name" placeholder="Optionen" checkmark :highlightOnSelect="false" class="w-full md:w-14rem" />
