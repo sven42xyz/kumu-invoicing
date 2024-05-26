@@ -83,8 +83,17 @@
                 }
             }
         }
+        
     }
+    
   }
+  const selectedProduct = ref();
+    const onRowSelect = (event) => {
+        console.log("selected "+  event.data.name)
+    };
+    const onRowUnselect = (event) => {
+        console.log("unselected "+  event.data.name)
+    }
   </script>
   
   <style scoped>

@@ -6,7 +6,8 @@
                 {{this.title}}</div>
         </template>
         <p class="m-0" style="color: black;">
-            <DataTable :value="invoiceArray" stripedRows paginator removableSort  :rows="15" style="color: black; border-radius: 0%;"
+            <DataTable v-model:selection="selectedProduct" :value="invoiceArr" selectionMode="single" dataKey="Rechnungsnummer" :metaKeySelection="false"
+        @rowSelect="onRowSelect" @rowUnselect="onRowUnselect" stripedRows paginator removableSort  :rows="15" style="color: black; border-radius: 0%;"
                 paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
                 currentPageReportTemplate="{first} bis {last} von {totalRecords}">
                 <ColumnColumn field="Rechnungsnummer" header="Rechnungsnummer" sortable style="color: black; font-size: 1.75vmin; padding: 1vmin"></ColumnColumn>
@@ -17,7 +18,8 @@
         </p>
     </Field-set>
     <p v-else :style="cssProps">
-            <DataTable v-model:filters="filters" :value="invoiceArray" removableSort  dataKey="id" filterDisplay="row" stripedRows scrollable scrollHeight="73vmin" style="color: black; border-radius: 0%;">
+            <DataTable v-model:selection="selectedProduct" v-model:filters="filters" :value="invoiceArr" selectionMode="single" :metaKeySelection="false"
+        @rowSelect="onRowSelect" @rowUnselect="onRowUnselect" removableSort  dataKey="Rechnungsnummer" filterDisplay="row" stripedRows scrollable scrollHeight="73vmin" style="color: black; border-radius: 0%;">
                 <ColumnColumn field="Rechnungsnummer" sortable filterField="Rechnungsnummer" header="Rechnungsnummer"
                     style="color: black; font-size: 1.75vmin; padding: 1vmin">
                     <template #body="{ data }">{{ data.Rechnungsnummer }}</template>
@@ -53,13 +55,18 @@
             </DataTable>
         </p>
 </template>
+
+<script setup>
+    import { ref } from 'vue';
+    import { toRef } from "vue";
+</script>
   
   <script>
   import { FilterMatchMode } from 'primevue/api';
 
   export default {
     props:{    
-        invoiceArray: {
+        invoiceArr: {
             type: Array,
             required: true
         },
@@ -74,10 +81,13 @@
         }
     },
 
+
     created(){
-
         console.log(this.style);
-
+        
+        const invoiceArray = toRef(this.invoiceArr, 'invoiceArr');
+        console.log(invoiceArray);
+        console.log(this.invoiceArr);
     },
 
     data(){
@@ -124,6 +134,13 @@
         }
     }
   }
+    const selectedProduct = ref();
+    const onRowSelect = (event) => {
+        console.log("selected "+  event.data.name)
+    };
+    const onRowUnselect = (event) => {
+        console.log("unselected "+  event.data.name)
+    }
   </script>
   
   <style scoped>

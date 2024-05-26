@@ -59,6 +59,8 @@
                 name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
             },{
                 name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
+            },{
+                name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
             },]);
     const onRowEditSave = (event) => {
         let { newData, index } = event;

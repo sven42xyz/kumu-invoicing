@@ -7,15 +7,18 @@
                 url="http://172.17.224.127:3030/api/file" accept="application/xml,text/xml" :maxFileSize="1000000" @upload="onUpload" :auto="true"
                 chooseLabel="Durchsuchen" />
         </Card>
-        <Card style="width: 47%; height: 5.4vmin; margin-right: 2%; float:right; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;">
-            <!-- evlt durch Toolbar ersetzen -->
-            <InputGroup style="border-radius: 1vmin;">
-                <InputText type="text" v-model="value" placeholder="Rechnungsnummer" />
-                <DropdownDropdown v-model="selectedActivity" :options="activities" optionLabel="name" placeholder="Optionen" checkmark :highlightOnSelect="false" class="w-full md:w-14rem" />
-                <ButtonButton label="Submit" style="border-start-end-radius: 1vmin; border-end-end-radius: 1vmin;"></ButtonButton>
-            </InputGroup>
-        </Card>
-        <InvoiceTable  :invoiceArray= this.products :style="left" :filtered="filtered"></InvoiceTable>
+        <ToolBar style="justify-content: space-evenly; gap: 0; width: 47%; height: 5.4vmin; margin-right: 2%; float:right; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin; padding: 0;">
+            <template #start>
+                <InputText style="height: 5.3vmin; width: 100%; border-start-end-radius: 0; border-end-end-radius: 0;" type="text" v-model="value" placeholder="Rechnungsnummer" />
+            </template>
+
+            <template #center>
+                <DropdownDropdown style="height: 5.3vmin; width: 100%; border-radius: 0;" v-model="selectedActivity" :options="activities" optionLabel="name" placeholder="Optionen" checkmark :highlightOnSelect="false" class="w-full md:w-14rem" />
+            </template>
+
+            <template #end> <ButtonButton label="Submit" style="width: 100%; height: 5.3vmin; border-color: rgb(189, 189, 189); border-start-end-radius: 1vmin; border-end-end-radius: 1vmin;"></ButtonButton></template>
+        </ToolBar>
+        <InvoiceTable  :invoiceArr= this.products :style="left" :filtered="filtered"></InvoiceTable>
         <Card style="width: 47%; height: 77.5%; margin-right: 2%; float:right; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;padding: 1vmin;">
             <InputSwitch v-model="checked" style="float: left;"/>
             <div style="float: left; padding-left: 1vmin;">XML anzeigen</div>
@@ -91,4 +94,17 @@ export default {
     background: whitesmoke;
     color: grey;
 }
+
+/deep/ .p-toolbar-group-center{
+    width: 23.33%;
+}
+
+/deep/ .p-toolbar-group-start{
+    width: 63.33%;
+}
+
+/deep/ .p-toolbar-group-end{
+    width: 13.33%;
+}
+
 </style>
