@@ -1,14 +1,16 @@
 <template>
-      <div class="flex justify-content-center">
-        <div v-if="disabled==true" class="flex">
-            <label for="field">{{title}}</label>
-            <InputText id="fieldText" disabled v-model="values" :placeholder="value" />
-        </div>
-        <div v-else class="flex">
-            <label for="field">{{title}}</label>
-            <InputText id="fieldText" v-model="values">{{ value }}</InputText>
-        </div>
-      </div>
+    <div class="row" v-if="disabled==true" >
+        <label for="field">{{title}}</label>
+    </div>
+    <div v-else class="row">
+        <label for="field">{{title}}</label>
+    </div>
+    <div class="row" v-if="disabled==true" >
+        <InputText id="fieldText" disabled v-model="values" :placeholder="value" />
+    </div>
+    <div v-else class="row">
+        <InputText id="fieldText" v-model="values">{{ value }}</InputText>
+    </div>
 </template>
   
   <script>
@@ -40,4 +42,9 @@
   </script>
   
   <style scoped>
+    .row{
+        width: 40%;
+        padding-left: 5vmin;
+        text-align: start !important;
+    }
   </style>
