@@ -136,10 +136,10 @@
   }
     const selectedProduct = ref();
     const onRowSelect = (event) => {
-        console.log("selected "+  event.data.name)
+        console.log("selected "+  event.data.Rechnungsnummer)
     };
     const onRowUnselect = (event) => {
-        console.log("unselected "+  event.data.name)
+        console.log("unselected "+  event.data.Rechnungsnummer)
     }
   </script>
   

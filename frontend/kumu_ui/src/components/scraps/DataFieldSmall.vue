@@ -1,15 +1,11 @@
 <template>
-    <div class="row" v-if="disabled==true" style="margin-top: 1vmin;" >
+    <div class="row" v-if="disabled==true" style="margin-top: 0.75vmin;" >
         <label for="field">{{title}}</label>
-    </div>
-    <div v-else class="row" style="margin-top: 1vmin;">
-        <label for="field">{{title}}</label>
-    </div>
-    <div class="row" v-if="disabled==true" >
         <InputText id="fieldText" disabled v-model="values" :placeholder="value" />
     </div>
-    <div v-else class="row">
-        <InputText id="fieldText" v-model="values" :placeholder="value"></InputText>
+    <div v-else class="row" style="margin-top: 0.75vmin;">
+        <label for="field">{{title}}</label>
+        <InputText id="fieldText" v-model="values" :placeholder="value" />
     </div>
 </template>
   
@@ -46,16 +42,18 @@
         width: 100%;
         height: max-content;
         padding-left: 4vmin;
-        font-size: 1.75vmin;
+        font-size: 1.5vmin;
         text-align: start !important;
     }
 
     /deep/ .p-inputtext{
-        height: 3vmin;
+        height: 2.5vmin;
+        width: 75%;
     }
 
     label{
-        height: 2.5vmin;
+        height: 2vmin;
         margin-bottom: 1%;
+        width: 25%;
     }
   </style>
