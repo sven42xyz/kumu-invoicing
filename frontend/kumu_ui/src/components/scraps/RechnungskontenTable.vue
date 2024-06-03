@@ -1,5 +1,5 @@
 <template>
-    <DataTable :value="invoiceAdress" v-model:editingRows="editingRows" size="small" stripedRows scrollable  scrollHeight="110px" style="color: black; border-radius: 0%;" editMode="row" dataKey="name" @row-edit-save="onRowEditSave">
+    <DataTable :value="InvoiceAcc" v-model:editingRows="editingRows" size="small" stripedRows scrollable  scrollHeight="110px" style="color: black; border-radius: 0%;" editMode="row" dataKey="name" @row-edit-save="onRowEditSave">
         <ColumnColumn field="name" style="color: black; font-size: 1.75vmin;">
             <template #editor="{ data, field }">
                 <InputText v-model="data[field]" style="width: 125%; margin-left: 0vmin;" />
@@ -20,6 +20,7 @@
 </template>
 
 <script setup>
+    import { toRef } from "vue";
     import { ref } from 'vue';
 
     const editingRows = ref([]);
@@ -29,9 +30,15 @@
 
   export default {
     props:{    
+        invoiceAcc: {
+            type: Array,
+            required: true
+        }
     },
 
     created(){
+        this.InvoiceAcc = this.invoiceAcc;     
+        this.invoiceAccount = toRef(this.InvoiceAcc, 'InvoiceAcc');
     },
 
     data(){
@@ -41,16 +48,15 @@
 
     computed: {
         
+    },
+    methods: {
+        onRowEditSave (event){
+            let { newData, index } = event;
+            this.InvoiceAcc[index] = newData;
+            this.invoiceAccount = toRef(this.InvoiceAcc, 'InvoiceAcc');
+        }
     }
   }
-    const invoiceAdress = ref([{
-                name: 'Kumu AG', iban: 'DE12345678935489', bank:'Sparkasse'
-            }]);
-    const onRowEditSave = (event) => {
-        let { newData, index } = event;
-
-        invoiceAdress.value[index] = newData;
-    };
 </script>
   
   <style scoped>

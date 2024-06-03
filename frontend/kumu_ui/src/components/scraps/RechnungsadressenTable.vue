@@ -1,5 +1,5 @@
 <template>
-    <DataTable :value="invoiceAdress" v-model:editingRows="editingRows" size="small" stripedRows scrollable  scrollHeight="135px" style="color: black; border-radius: 0%;" editMode="row" dataKey="name" @row-edit-save="onRowEditSave" :pt="{
+    <DataTable :value="InvoiceAdd" v-model:editingRows="editingRows" size="small" stripedRows scrollable  scrollHeight="135px" style="color: black; border-radius: 0%;" editMode="row" dataKey="name" @row-edit-save="onRowEditSave" :pt="{
         column: {
             bodycell: ({ state }) => ({
                 style:  state['d_editing']&&'padding-top: 0.6rem; padding-bottom: 0.6rem; font-size: small; line-height: normal'
@@ -36,6 +36,7 @@
 </template>
 
 <script setup>
+    import { toRef } from "vue";
     import { ref } from 'vue';
 
     const editingRows = ref([]);
@@ -45,34 +46,34 @@
 
   export default {
     props:{    
+        invoiceAdd: {
+            type: Array,
+            required: true
+        }
     },
 
-    created(){
+    created(){ 
+        this.InvoiceAdd = this.invoiceAdd;     
+        this.invoiceAdress = toRef(this.InvoiceAdd, 'InvoiceAdd');
     },
 
     data(){
         return{
-        }       
+        }     
     },
 
     computed: {
         
+    },
+    methods: {
+        onRowEditSave (event){
+            let { newData, index } = event;
+            this.InvoiceAdd[index] = newData;
+            this.invoiceAdress = toRef(this.InvoiceAdd, 'InvoiceAdd');
+        }
     }
   }
-    const invoiceAdress = ref([{
-                name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
-            },{
-                name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
-            },{
-                name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
-            },{
-                name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
-            },]);
-    const onRowEditSave = (event) => {
-        let { newData, index } = event;
 
-        invoiceAdress.value[index] = newData;
-    };
 </script>
   
   <style scoped>

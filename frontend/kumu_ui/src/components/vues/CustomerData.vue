@@ -65,10 +65,24 @@
               <template #center></template>
 
               <template #end> 
-                <ButtonButton icon="pi pi-plus" style="background: #4e4e51; margin-right: 1vmin; border: transparent; padding: none; height: 4vmin; width: 4vmin; border-radius: 1vmin; color: white; "/>
+                <ButtonButton @click="AddressVisible = true" icon="pi pi-plus" style="background: #4e4e51; margin-right: 1vmin; border: transparent; padding: none; height: 4vmin; width: 4vmin; border-radius: 1vmin; color: white; "/>
+                <DialogDialog v-model:visible="AddressVisible" modal header="Rechnungsadresse hinzufügen" :style="{ width: '40rem', height: '20rem', }">
+                  <div class="row" style="height: 45%;">
+                    <div class="column" style="height: 100%;width: 49.5%">
+                      <DataField :disabled=disabled title = "Leitweg-Id" ref="leitwegid" :value ="this.user.leitwegid"></DataField>
+                      <DataField :disabled=disabled title = "Name des Unternehmens" ref="name" :value ="this.user.name"></DataField>
+                      <DataField :disabled=disabled title = "Name des Unternehmens" ref="name" :value ="this.user.name"></DataField>
+                    </div>
+                    <div class="column" style="height: 100%;width: 49.5%">
+                      <DataField :disabled=disabled title = "Umsatzsteuernummer" ref="vatid" :value ="this.user.vatid"></DataField>
+                      <DataField :disabled=disabled title = "Registrierter Firmenname" ref="reName" :value ="this.user.regName"></DataField>
+                      <ButtonButton type="button" label="Save" @click="AddressVisible = false"></ButtonButton>
+                    </div>
+                  </div>
+              </DialogDialog>
               </template>
           </ToolBar>
-          <RechnungsadressenTable></RechnungsadressenTable>
+          <RechnungsadressenTable :invoiceAdd="invoiceAdress"></RechnungsadressenTable>
         </Card>
         <Card style="width: 47%; height: 21%; margin-left: 2%; float:left; margin-top: 1%; background-color: whitesmoke; border-radius: 1vmin;">
           <ToolBar style="background-color: rgb(124, 123, 123); border-color: rgb(124, 123, 123); border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0.9vmin; border-top-right-radius: 0.9vmin; height: 6vmin; padding: 0vmin; text-align: left; text-indent: 2.5%; font-size: 2.5vmin;">
@@ -82,7 +96,7 @@
                 <ButtonButton icon="pi pi-plus" style="background: #4e4e51; margin-right: 1vmin; border: transparent; padding: none; height: 4vmin; width: 4vmin; border-radius: 1vmin; color: white; "/>
               </template>
           </ToolBar>
-          <RechnungskontenTable></RechnungskontenTable>
+          <RechnungskontenTable :invoiceAcc ="invoiceAccount"></RechnungskontenTable>
         </Card>
     </div>
 </template>
@@ -111,6 +125,7 @@ import PartnerDatenTable from '../scraps/PartnerDatenTable';
         right: "right",
         disabled:true ,
         filtered: false,
+        AddressVisible: false,
         user: 
             {leitwegid: '1111:012345678',
              vatid: 'DE12345678',
@@ -122,6 +137,20 @@ import PartnerDatenTable from '../scraps/PartnerDatenTable';
              anrede: 'Frau'
             }
         ,
+        invoiceAdress: 
+            [{
+                name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
+            },{
+                name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
+            },{
+                name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
+            },{
+                name: 'Kumu AG Erftstadt', ort: 'Erftstadt', strasse:'abs Straße', plz: '66666', land: 'DE'
+            },]
+        ,
+        invoiceAccount :[{
+                name: 'Kumu AG', iban: 'DE12345678935489', bank:'Sparkasse'
+            }]
       };
     },
 
@@ -191,7 +220,6 @@ import PartnerDatenTable from '../scraps/PartnerDatenTable';
     /deep/ .p-inputtext:disabled{
       background-color: lightgray;
       color: black!important;
-      font-display: unset;
     }
     .enabled.row{
         margin-right: 0.25vmin;
