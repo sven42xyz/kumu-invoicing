@@ -56,4 +56,7 @@
         margin-bottom: 1%;
         width: 25%;
     }
+    ::placeholder {
+        color: black;
+    }
   </style>

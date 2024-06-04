@@ -66,17 +66,17 @@
 
               <template #end> 
                 <ButtonButton @click="AddressVisible = true" icon="pi pi-plus" style="background: #4e4e51; margin-right: 1vmin; border: transparent; padding: none; height: 4vmin; width: 4vmin; border-radius: 1vmin; color: white; "/>
-                <DialogDialog v-model:visible="AddressVisible" modal header="Rechnungsadresse hinzufügen" :style="{ width: '40rem', height: '20rem', }">
+                <DialogDialog v-model:visible="AddressVisible" modal header="Rechnungsadresse hinzufügen" :style="{ background: 'whitesmoke', width: '40rem', height: '20rem', }">
                   <div class="row" style="height: 45%;">
                     <div class="column" style="height: 100%;width: 49.5%">
-                      <DataField :disabled=disabled title = "Leitweg-Id" ref="leitwegid" :value ="this.user.leitwegid"></DataField>
-                      <DataField :disabled=disabled title = "Name des Unternehmens" ref="name" :value ="this.user.name"></DataField>
-                      <DataField :disabled=disabled title = "Name des Unternehmens" ref="name" :value ="this.user.name"></DataField>
+                      <DataField :disabled=disabled title = "Name der Niederlassung" ref="AddLocName"></DataField>
+                      <DataField :disabled=disabled title = "Postleitzahl" ref="AddLocPLZ"></DataField>
+                      <DataField :disabled=disabled title = "Länderkürzel" ref="AddLocCountry"></DataField>
                     </div>
                     <div class="column" style="height: 100%;width: 49.5%">
-                      <DataField :disabled=disabled title = "Umsatzsteuernummer" ref="vatid" :value ="this.user.vatid"></DataField>
-                      <DataField :disabled=disabled title = "Registrierter Firmenname" ref="reName" :value ="this.user.regName"></DataField>
-                      <ButtonButton type="button" label="Save" @click="AddressVisible = false"></ButtonButton>
+                      <DataField :disabled=disabled title = "Stadt" ref="AddLocCity"></DataField>
+                      <DataField :disabled=disabled title = "Straße" ref="AddLocStreet"></DataField>
+                      <ButtonButton type="btn-secondary" label="Save" @click="AddressVisible = false"></ButtonButton>
                     </div>
                   </div>
               </DialogDialog>

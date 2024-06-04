@@ -6736,9 +6736,13 @@
 
   .p-dialog-content {
     overflow-y: auto;
+    background: whitesmoke !important;
+    color: black !important;
   }
 
   .p-dialog-header {
+    background: whitesmoke !important;
+    color: black !important;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -6,7 +6,7 @@
         <label for="field">{{title}}</label>
     </div>
     <div class="row" v-if="disabled==true" >
-        <InputText id="fieldText" disabled v-model="values" :placeholder="value" />
+        <InputText id="fieldText" disabled v-model="values" :placeholder="value"></InputText>
     </div>
     <div v-else class="row">
         <InputText id="fieldText" v-model="values" :placeholder="value"></InputText>
@@ -57,5 +57,9 @@
     label{
         height: 2.5vmin;
         margin-bottom: 1%;
+    }
+
+    ::placeholder {
+        color: black;
     }
   </style>
