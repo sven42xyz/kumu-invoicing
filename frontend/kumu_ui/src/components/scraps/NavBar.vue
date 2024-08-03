@@ -27,10 +27,6 @@
         }
     },
   
-    created(){
-        console.log(this.products);
-    },
-  
     data() {
       return {
         items: [

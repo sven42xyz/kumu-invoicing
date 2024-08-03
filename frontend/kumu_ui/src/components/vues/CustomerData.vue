@@ -212,12 +212,12 @@ import PartnerDatenTable from '../scraps/PartnerDatenTable';
         color: grey;
     }
 
-    /deep/ .p-toolbar-group-end{
+    :deep() .p-toolbar-group-end{
         margin-right: 1vmin;
         align-content: end !important;
     }
 
-    /deep/ .p-inputtext:disabled{
+    :deep() .p-inputtext:disabled{
       background-color: lightgray;
       color: black!important;
     }

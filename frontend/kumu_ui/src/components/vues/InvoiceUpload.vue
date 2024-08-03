@@ -95,15 +95,15 @@ export default {
     color: grey;
 }
 
-/deep/ .p-toolbar-group-center{
+:deep() .p-toolbar-group-center{
     width: 23.33%;
 }
 
-/deep/ .p-toolbar-group-start{
+:deep()  .p-toolbar-group-start{
     width: 63.33%;
 }
 
-/deep/ .p-toolbar-group-end{
+:deep() .p-toolbar-group-end{
     width: 13.33%;
 }
 

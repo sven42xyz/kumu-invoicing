@@ -123,17 +123,11 @@ import Column from 'primevue/column';
 
 const app = createApp(App);
 
-
 app.use(router);
 app.use(VueCookies, {
     expireTimes: '0',
     sameSite: 'Strict'
 });
-app.use(
- //   new VueSocketIO({
-  //      connection: process.env.VUE_APP_SOCKET_ENDPOINT
- //   })
-);
 app.use(PrimeVue, { ripple: true, inputStyle: "outlined" });
 app.use(ToastService);
 app.use(ConfirmationService);

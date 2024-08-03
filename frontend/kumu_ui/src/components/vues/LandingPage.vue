@@ -24,7 +24,7 @@
         <div class="login-form-group ">
           <button v-if="this.validateInput() == true" v-on:click="loginUser" class="btn btn-dark btn-Login"
             type="Submit" id="new-game" aria-expanded="false">Anmelden</button>
-          <button v-else v-on:click="loginUser"
+          <button v-else 
             v-tooltip="{ value: 'Bitte Anmeldename und Passwort eingeben', pt: { text: 'text-danger' } }"
             class="btn btn-dark btn-Login" type="Submit" id="new-game" aria-expanded="false">Anmelden</button>
         </div>

@@ -14,31 +14,19 @@
 </template>
   
   <script>
-
-  export default {
-    props:{    
-        disabled:{
-            type: Boolean,
+    export default {
+        props:{    
+            disabled:{
+                type: Boolean,
+            },
+            title:{
+                type: String,
+            },
+            value:{
+                type: String,
+            }
         },
-        title:{
-            type: String,
-        },
-        value:{
-            type: String,
-        }
-    },
-
-    created(){
-    },
-
-    data(){
-   
-    },
-
-    computed: {
-
     }
-  }
   </script>
   
   <style scoped>
